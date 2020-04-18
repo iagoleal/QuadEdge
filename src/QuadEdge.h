@@ -2,11 +2,22 @@
 struct QuadEdge;
 typedef struct QuadEdge QuadEdge;
 
+/* A Mesh structure for QuadEdges */
+struct Mesh {
+    point    *vertices;
+    QuadEdge *left;
+    QuadEdge *right;
+};
+typedef struct Mesh Mesh;
+
+/* Find Delaunay triangulation */
+Mesh triangulate(point*, unsigned int);
+
 /* Access vertex / face information */
-Point2d origin(QuadEdge*);
-Point2d dest(QuadEdge*);
-Point2d left(QuadEdge*);
-Point2d right(QuadEdge*);
+point origin(QuadEdge*);
+point dest(QuadEdge*);
+point left(QuadEdge*);
+point right(QuadEdge*);
 
 /* Access rotated quad-edge information */
 QuadEdge* rot(QuadEdge*);
@@ -34,7 +45,7 @@ QuadEdge* rprev(QuadEdge*);
 QuadEdge* lprev(QuadEdge*);
 
 /* Edge manipulation */
-QuadEdge* make_edge(Point2d, Point2d);
+QuadEdge* make_edge(point, point);
 void      delete_edge(QuadEdge*);
 void      splice(QuadEdge*, QuadEdge*);
 QuadEdge* connect(QuadEdge*, QuadEdge*);

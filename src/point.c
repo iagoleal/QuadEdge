@@ -3,16 +3,16 @@
 #include "point.h"
 
 /* Dealing with points */
-int point_isequal(Point2d a, Point2d b) {
+int point_isequal(point a, point b) {
     return a.x == b.x && a.y == b.y;
 }
 
 /* Euclidian distance */
-double dist2(Point2d a, Point2d b) {
+double dist2(point a, point b) {
     return pow(a.x - b.x, 2) + pow(a.y - b.y, 2);
 }
 
-int lex_compare(Point2d a, Point2d b) {
+int lex_compare(point a, point b) {
     if (a.x > b.x || a.x == b.x && a.y > b.y)
         return 1;
     if (a.x < b.x || a.x == b.x && a.y < b.y)
@@ -31,15 +31,15 @@ double rand_double(double from, double to) {
 
 #define rand_unit() rand_double(0.0,1.0)
 
-Point2d rand_point(double min_x, double max_x, double min_y, double max_y) {
-    Point2d a;
+point rand_point(double min_x, double max_x, double min_y, double max_y) {
+    point a;
     a.x = rand_double(min_x, max_x);
     a.y = rand_double(min_y, max_y);
     return a;
 }
 
-Point2d* whitenoise(unsigned int n, double min_x, double max_x, double min_y, double max_y) {
-    Point2d *pts, *p;
+point* whitenoise(unsigned int n, double min_x, double max_x, double min_y, double max_y) {
+    point *pts, *p;
     pts = malloc(n * sizeof(*pts));
     for (p=pts; p < pts + n; ++p) {
         p->x = rand_double(min_x, max_x);

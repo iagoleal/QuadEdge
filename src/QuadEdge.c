@@ -4,25 +4,25 @@
 
 /* Types used on this module */
 struct QuadEdge {
-    struct Point2d   origin;
+    struct point     origin;
     struct QuadEdge* rot;
     struct QuadEdge* onext;
 };
 
 /* Access Vertex information */
-Point2d origin(QuadEdge* e) {
+point origin(QuadEdge* e) {
     return e->origin;
 }
 
-Point2d dest(QuadEdge* e) {
+point dest(QuadEdge* e) {
     return origin(sym(e));
 }
 
-Point2d right(QuadEdge* e) {
+point right(QuadEdge* e) {
     return origin(rot(e));
 }
 
-Point2d left(QuadEdge* e) {
+point left(QuadEdge* e) {
     return origin(invrot(e));
 }
 
@@ -81,13 +81,13 @@ QuadEdge* dprev(QuadEdge* e) {
      - onext(rot(e)) = invrot(e)
      - onext(invrot(e)) = rot(e)
 */
-QuadEdge* make_edge(Point2d x, Point2d y) {
+QuadEdge* make_edge(point a, point b) {
     QuadEdge* e1 = malloc(sizeof *e1);
     QuadEdge* e2 = malloc(sizeof *e2);
     QuadEdge* e3 = malloc(sizeof *e3);
     QuadEdge* e4 = malloc(sizeof *e4);
-    e1->origin = x; /* Set origin */
-    e3->origin = y; /* Set destination */
+    e1->origin = a; /* Set origin */
+    e3->origin = b; /* Set destination */
     e1->rot = e2;
     e2->rot = e3;
     e3->rot = e4;
