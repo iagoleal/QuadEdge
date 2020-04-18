@@ -6,6 +6,14 @@ int point_isequal(Point2d a, Point2d b) {
     return a.x == b.x && a.y == b.y;
 }
 
+int lex_compare(Point2d a, Point2d b) {
+    if (a.x > b.x || a.x == b.x && a.y > b.y)
+        return 1;
+    if (a.x < b.x || a.x == b.x && a.y < b.y)
+        return -1;
+    return 0;
+}
+
 /*
  Random point generation
 */

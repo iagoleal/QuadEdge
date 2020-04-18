@@ -6,6 +6,7 @@ typedef struct Point2d {
 
 /* Functions on points */
 int point_isequal(Point2d, Point2d);
+int lex_compare(Point2d, Point2d);
 
 /* Generating random points */
 double rand_double(double,double);
