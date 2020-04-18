@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <math.h>
 #include "point.h"
 #include "QuadEdge.h"
@@ -17,10 +18,15 @@ static double dist2(Point2d, Point2d);
 static double det2(double, double, double, double);
 static double det3(double, double, double, double, double, double, double, double, double);
 
+int triang_compare(const void* p1, const void* p2) {
+    return lex_compare(*(Point2d*)p1, *(Point2d*)p2);
+}
 
-Mesh triangulate(Point2d* pts, unsigned int n) {
-    Point2d* ordered_sites = points_sort_lex(pts);
-    Mesh edges = delaunay(ordered_sites, n);
+Mesh triangulate(Point2d* sites, unsigned int n) {
+    Mesh edges;
+    qsort(sites, n, sizeof *sites, triang_compare);
+    edges = delaunay(sites, n);
+    /* Find voronoi */
     return edges;
 }
 
