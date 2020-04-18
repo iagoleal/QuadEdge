@@ -1,12 +1,8 @@
 #include <stdlib.h>
+#include "point.h"
 #include "QuadEdge.h"
 
 /* Types used on this module */
-struct Point2d {
-    double x;
-    double y;
-};
-
 struct QuadEdge {
     struct Point2d   origin;
     struct QuadEdge* rot;

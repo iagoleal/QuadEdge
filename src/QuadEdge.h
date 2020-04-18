@@ -1,5 +1,5 @@
-/* New types */
-typedef struct Point2d Point2d;
+/* A node on a QuadEdge Mesh */
+struct QuadEdge;
 typedef struct QuadEdge QuadEdge;
 
 /* Access vertex / face information */
