@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <math.h>
 #include "point.h"
 #include "QuadEdge.h"
 #include "Delaunay.h"
@@ -14,7 +13,6 @@ static int left_of(Point2d, QuadEdge*);
 static int right_of(Point2d, QuadEdge*);
 static int incircle(Point2d, Point2d, Point2d, Point2d);
 static int ccw(Point2d, Point2d, Point2d);
-static double dist2(Point2d, Point2d);
 static double det2(double, double, double, double);
 static double det3(double, double, double, double, double, double, double, double, double);
 
@@ -158,11 +156,6 @@ static int ccw(Point2d a, Point2d b, Point2d c) {
     return det2(a.x - c.x, a.y - c.y,
                 b.x - c.x, b.y - c.y
                ) > 0;
-}
-
-/* Euclidian distance */
-static double dist2(Point2d a, Point2d b) {
-    return pow(a.x - b.x, 2) + pow(a.y - b.y, 2);
 }
 
 static double det2(double a, double b, double c, double d) {

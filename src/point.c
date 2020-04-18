@@ -1,9 +1,15 @@
 #include <stdlib.h>
+#include <math.h>
 #include "point.h"
 
 /* Dealing with points */
 int point_isequal(Point2d a, Point2d b) {
     return a.x == b.x && a.y == b.y;
+}
+
+/* Euclidian distance */
+double dist2(Point2d a, Point2d b) {
+    return pow(a.x - b.x, 2) + pow(a.y - b.y, 2);
 }
 
 int lex_compare(Point2d a, Point2d b) {
